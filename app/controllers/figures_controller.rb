@@ -14,6 +14,7 @@ class FiguresController < ApplicationController
     # a figure can have many landmarks, this will be an array
     # a figure can have many titles, this will be an array
     @figure = Figure.create(name: params[:figure][:name])
+    @figure.titles = Title.find(3)
       binding.pry
 
   end
