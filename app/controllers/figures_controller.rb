@@ -10,10 +10,12 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
+
     # a figure can have many landmarks, this will be an array
     # a figure can have many titles, this will be an array
-    @figure = Figure.create(params[:figure])
-    binding.pry
+    @figure = Figure.create(name: params[:figure][:name])
+      binding.pry
+
   end
 
 end
