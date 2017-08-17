@@ -23,7 +23,7 @@
   <label>Create New Title:</label>
     <input type="text"
            name="title[name]"
-           id="title_name">
+           id="new_title">
     <br></br>
 
   <label>Landmarks:</label>
@@ -31,7 +31,7 @@
       <%Landmark.all.each do |landmark| %>
       <li><%=landmark.name%></li>
       <input type="checkbox"
-             id="title_<%=landmark.id%>"
+             id="landmark_<%=landmark.id%>"
              name="figure[landmark_ids][]"
              value="<%= landmark.id %>">
       <%end%>
@@ -45,7 +45,7 @@
            id="landmark_name">
     <label>Year Completed:</label>
     <input type="text"
-           name="landmark[year_completed]" 
+           name="landmark[year_completed]"
            id="year_completed">
 
   <input type="submit"

@@ -10,11 +10,21 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    # a figure can have many landmarks, this will be an array
-    # a figure can have many titles, this will be an array
+
     @figure = Figure.create(name: params[:figure][:name])
+
     @figure.titles << Title.first
-# this works
+    @figure.landmarks << Landmark.first
+# need to figure a way to check if titles or landmarks exist, if not create them
+
+    #if !params[:title][:name].empty?
+    #  @figure.titles << Title.create(params[:title])
+    #  binding.pry
+    #end
+
+    #if !params[:landmark][:name].empty?
+    #  @figure.landmarks << Landmark.create(params[:landmark])
+    #end
 
   end
 
