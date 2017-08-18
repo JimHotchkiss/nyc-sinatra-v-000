@@ -11,15 +11,12 @@ class FiguresController < ApplicationController
 
   get '/figures/:id' do
     @figure = Figure.find(params[:id])
-    #binding.pry ~ it's making it here
-    erb :'figures/edit'
+    erb :'figures/show'
   end
 
   post '/figures' do
-
     @figure = Figure.create(name: params[:figure][:name])
-    @figure.landmarks << Landmark.find_or_create_by(params[:landmark_id])
-    
+
     if params[:figure][:title_ids]
       @figure.titles << Title.find_or_create_by(params[:figure][:title_ids])
 
@@ -27,10 +24,22 @@ class FiguresController < ApplicationController
       @figure.titles << Title.find_or_create_by(name: params[:title][:name])
     end
 
-    if params[:landmark][:name]
+    if params[:figure][:landmark_ids]
+      @figure.landmarks << Landmark.find_or_create_by(params[:landmark_ids])
+    elsif !params[:landmark][:name].empty?
       @figure.landmarks << Landmark.find_or_create_by(name: params[:landmark][:name])
-    end 
+    end
      @figure.save
+     redirect "/figures/#{@figure.id}"
+  end
+
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    erb :'figures/edit'
+  end
+
+  patch '/figures/:id' do
+    binding.pry
     redirect "/figures/#{@figure.id}"
   end
 
