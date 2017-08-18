@@ -1,9 +1,7 @@
 <h1><%=@figure.id%></h1>
-<form action="/songs/<%=@figure.id%>" method="POST">
+<form action="/figures/<%=@figure.id%>" method="post">
   <input type="hidden" name="_method" value="PATCH">
-
+  <label>Figure Name</label>
   <input type="text" name="figure[name]">
-
-  <input type="submit" value="submit">
-
+  <input type="submit" value="Submit">
 </form>
