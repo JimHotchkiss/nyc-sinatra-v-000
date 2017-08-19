@@ -1,1 +1,9 @@
 <h1>Show: <%= @figure.name %></h1>
+<br>
+
+<label>Landmarks:</label>
+<%@figure.landmarks.each do |landmark|%>
+<ul>
+  <li><%=landmark.name%></li>
+</ul>
+<%end%>
