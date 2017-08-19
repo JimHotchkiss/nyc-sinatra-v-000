@@ -1,1 +1,8 @@
 <h1>Welcome To NYC Landmarks index page</h1>
+
+<label>Lanmarks:</label>
+<%@landmarks.each do |landmark|%>
+<ul>
+  <li><%=landmark.name%></li>
+</ul>
+<%end%>
